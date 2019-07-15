@@ -21,18 +21,16 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
-	private UserDetailServiceImpl userDetailsService;
+    @Autowired
+    private UserDetailServiceImpl userDetailsService;
 
-	  @Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
+//		  http.cors().and().authorizeRequests().anyRequest().permitAll();  // permitAll
+
         http.csrf().disable().cors().and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers("/sign" +
-						"" +
-						"" +
-						"" +
-						"up","allpalylists","/log").permitAll()
+                .antMatchers("/signup", "allpalylists", "/log", "/actuator/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // Filter for the api/login requests
@@ -41,34 +39,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Filter for other requests to check JWT in header
                 .addFilterBefore(new AuthenticationFilter(),
                         UsernamePasswordAuthenticationFilter.class);
-
-
     }
 
 
-	  @Bean
-      CorsConfigurationSource corsConfigurationSource() {
-	      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	      CorsConfiguration config = new CorsConfiguration();
-			config.setAllowedOrigins(Arrays.asList("*"));
-			config.setAllowedMethods(Arrays.asList("*"));
-			config.setAllowedHeaders(Arrays.asList("*"));
-			config.setAllowCredentials(true);
-	      config.applyPermitDefaultValues();
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(Arrays.asList("*"));
+        config.setAllowedMethods(Arrays.asList("*"));
+        config.setAllowedHeaders(Arrays.asList("*"));
+        config.setAllowCredentials(true);
+        config.applyPermitDefaultValues();
 
-	      source.registerCorsConfiguration("/**", config);
-	      return source;
-	}
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
 
 
-	@Bean
-	public BCryptPasswordEncoder encoder(){
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public BCryptPasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-	}
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+    }
 
 }

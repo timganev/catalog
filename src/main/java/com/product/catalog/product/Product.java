@@ -1,8 +1,11 @@
 package com.product.catalog.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Product {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)

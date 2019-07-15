@@ -1,7 +1,9 @@
 package com.product.catalog;
 
 import com.product.catalog.user.User;
+import com.product.catalog.user.UserDto;
 import com.product.catalog.user.UserRepository;
+import com.product.catalog.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +24,6 @@ public class CatalogApplication {
     @Bean
     CommandLineRunner runner() {
         return args -> {
-
 
 
 

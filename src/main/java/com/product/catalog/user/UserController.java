@@ -16,6 +16,11 @@ public class UserController {
 
     private UserService userService;
 
+    @RequestMapping("/")
+    public String home() {
+        return "Reporting for duty!";
+    }
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
