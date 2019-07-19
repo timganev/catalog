@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController() {
         this.userService = userService;
     }
 

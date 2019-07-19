@@ -16,16 +16,15 @@ public class User {
     private Integer id;
 
     @Column(nullable = false, unique = true)
-    @Size(min = 2,max = 20,message = "Username must be between 2 and 20 symbols")
+    @Size(min = 2, max = 20, message = "Username must be between 2 and 20 symbols")
     private String username;
 
     @Column(nullable = false)
-    @Size(min = 2,max = 120,message = "Password must be between 2 and 20 symbols")
+    @Size(min = 2, max = 120, message = "Password must be between 2 and 20 symbols")
     private String password;
 
     @Column(nullable = false)
     private String role;
-
 
 
     public User() {
@@ -34,7 +33,7 @@ public class User {
     public User(String username, String password, String role) {
         super();
         setUsername(username);
-        this.password=password;
+        this.password = password;
         this.role = role;
     }
 

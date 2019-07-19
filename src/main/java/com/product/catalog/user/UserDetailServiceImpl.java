@@ -1,4 +1,4 @@
-package com.product.catalog.config;
+package com.product.catalog.user;
 
 
 import com.product.catalog.user.User;
