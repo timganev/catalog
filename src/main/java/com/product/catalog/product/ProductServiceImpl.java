@@ -1,6 +1,5 @@
 package com.product.catalog.product;
 
-import com.product.catalog.config.ApplicationNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

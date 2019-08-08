@@ -1,76 +1,76 @@
 package com.product.catalog.product;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Product {
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	private long id;
-	private String name, description, image, username;
-	private double price;
 
+  @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
+  private long id;
+  private String name, description, image, username;
+  private double price;
 
+  public Product() {
+  }
 
-	public Product() {}
+  public Product(long id, String name, String description, String image, String username, double price) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.image = image;
+    this.username = username;
+    this.price = price;
+  }
 
-	public Product(String name, String description, String image, String username, double price) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.image = image;
-		this.username = username;
-		this.price = price;
-	}
+  public long getId() {
+    return id;
+  }
 
-	public String getUsername() {
-		return username;
-	}
+  public void setId(long id) {
+    this.id = id;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public long getId() {
-		return id;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public String getImage() {
+    return image;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setImage(String image) {
+    this.image = image;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public String getUsername() {
+    return username;
+  }
 
-	public String getImage() {
-		return image;
-	}
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+  public double getPrice() {
+    return price;
+  }
 
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
+  public void setPrice(double price) {
+    this.price = price;
+  }
 }
