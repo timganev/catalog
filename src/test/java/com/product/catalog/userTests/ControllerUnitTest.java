@@ -1,5 +1,6 @@
 package com.product.catalog.userTests;
 
+import com.product.catalog.product.Product;
 import com.product.catalog.product.ProductController;
 import com.product.catalog.product.ProductRepository;
 import com.product.catalog.product.ProductService;
@@ -14,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import static org.junit.Assert.assertEquals;
