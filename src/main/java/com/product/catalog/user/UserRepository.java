@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>, UserRepositoryCustom {
+public interface UserRepository extends JpaRepository<User, Integer> {
     User findFirstByUsername(String username);
 //    Page<User> findAllByUsername(String username, Pageable page);
 
 }
+

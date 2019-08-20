@@ -29,10 +29,10 @@ public class CatalogApplication {
     CommandLineRunner runner(UserRepository userRepository, ProductRepository productRepository) {
         return args -> {
 
-            productRepository.save(new Product("xWing", "description 1", "no image", "", 11));
-            productRepository.save(new Product("Interceptor", "description 2", "no image", "", 33));
-            userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN"));
-            userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
+//            productRepository.save(new Product("xWing", "description 1", "no image", "", 11));
+//            productRepository.save(new Product("Interceptor", "description 2", "no image", "", 33));
+//            userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN"));
+//            userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
 
         };
     }

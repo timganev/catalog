@@ -1,12 +1,11 @@
 package com.product.catalog.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.product.catalog.config.AccountCredentials;
-import com.product.catalog.config.AuthenticationService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -42,8 +42,13 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
   @Override
   protected void successfulAuthentication(
           HttpServletRequest req,
-          HttpServletResponse res, FilterChain chain,
-          Authentication auth) throws IOException, ServletException {
-	  AuthenticationService.addToken(res, auth.getName());
+          HttpServletResponse response, FilterChain chain,
+          Authentication authentication) throws IOException, ServletException {
+    final String authorities = authentication.getAuthorities().stream()
+            .map(GrantedAuthority::getAuthority)
+            .collect(Collectors.joining(","));
+
+
+	  AuthenticationService.addToken(response, authentication.getName(),authorities );
   }
 }

@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @Autowired
-    public UserController() {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -40,5 +40,7 @@ public class UserController {
     public User saveUser(@RequestBody UserDto user){
         return userService.save(user);
     }
+
+
 
 }

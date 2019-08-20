@@ -1,4 +1,4 @@
-package com.product.catalog.config;
+package com.product.catalog.security;
 
 public class AccountCredentials {
 	private String username;
