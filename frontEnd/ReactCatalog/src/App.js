@@ -5,8 +5,6 @@ import {
   MDBNavbarNav,
   MDBCollapse,
   MDBNavItem,
-  MDBFooter,
-  MDBIcon,
   MDBBtn
 } from "mdbreact";
 import { ReactComponent as Logo } from "./assets/logo.svg";
@@ -15,7 +13,9 @@ import HomePage from "./components/HomePage";
 import AdminPage from "./components/AdminPage";
 import Login from "./components/users/Login";
 import Team from "./components/Team";
+import Footer from "./components/Footer";
 import "./App.css";
+
 class App extends Component {
   state = {
     collapseID: "",
@@ -46,12 +46,10 @@ class App extends Component {
   render() {
     const login =
       this.state.username == null ? (
-        <MDBNavItem>
-          <Login
-            updateRole={this.updateRole.bind(this)}
-            updateUsername={this.updateUsername.bind(this)}
-          />
-        </MDBNavItem>
+        <Login
+          updateRole={this.updateRole.bind(this)}
+          updateUsername={this.updateUsername.bind(this)}
+        />
       ) : (
         <div />
       );
@@ -74,14 +72,7 @@ class App extends Component {
         <HomePage role={this.state.role} username={this.state.username} />
       );
 
-    const admin =
-      this.state.role == "ADMIN" ? (
-        <MDBNavItem>
-          <AdminPage />
-        </MDBNavItem>
-      ) : (
-        <div />
-      );
+    const admin = this.state.role == "ADMIN" ? <AdminPage /> : <div />;
 
     const overlay = (
       <div
@@ -122,27 +113,9 @@ class App extends Component {
             {login}
             {home}
             {admin}
-
             <Team />
           </main>
-          <MDBFooter m-5 color="elegant-color">
-            <p className="footer-copyright mb-0 py-3 text-center">
-              &copy; {new Date().getFullYear()}{" "}
-              <a
-                href="https://github.com/timganev/productcatalog"
-                target="_blank"
-              >
-                {" "}
-                Product Catalog App - GitHub{" "}
-                <MDBIcon
-                  fab
-                  icon="github"
-                  className="grey-text mr-2"
-                  size="2x"
-                />
-              </a>
-            </p>
-          </MDBFooter>
+          <Footer />>
         </div>
       </Router>
     );

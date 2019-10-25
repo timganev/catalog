@@ -20,21 +20,35 @@ public class CatalogApplication {
 //    @Autowired
 //    private ProductRepository productRepository;
 
-    public static void main(String[] args) {
-        SpringApplication.run(CatalogApplication.class, args);
-        System.out.println("Hello from Tim");
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(CatalogApplication.class, args);
+    System.out.println("Hello from Tim");
+  }
 
-    @Bean
-    CommandLineRunner runner(UserRepository userRepository, ProductRepository productRepository) {
-        return args -> {
+  @Bean
+  CommandLineRunner runner(UserRepository userRepository, ProductRepository productRepository) {
+    return args -> {
 
-//            productRepository.save(new Product("xWing", "description 1", "no image", "", 11));
-//            productRepository.save(new Product("Interceptor", "description 2", "no image", "", 33));
-//            userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN"));
-//            userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
+      String xwingDescription = "Designed and manufactured by the Incom Corporation, they were "
+          + "designed to fit in between the Z-95 and the larger ARC-170, and are primarily "
+          + "depicted as the primary space superiority, light escort and reconnaissance craft of "
+          + "the Rebel Alliance";
+      String interceptorDescription = "An interceptor was a starfighter classification typically "
+          + "applied to starships that sacrificed heavy ordnance payloads, armor, deflector "
+          + "shields, and/or a hyperdrive in favor of pure speed and agility in combat.";
+      String interceptorImg = "https://vignette.wikia.nocookie.net/starwars/images/f/f5/TIE_Interceptor_BF"
+          + ".png/revision/latest/scale-to-width-down/2000?cb=20170501054325";
+      String xWingImg ="https://vignette.wikia.nocookie.net/starwars/images/6/60/Xwing-SWB.jpg/revision/latest/scale-to-width-down/2000?cb=20160704070524";
+      productRepository.save(new Product("xWing", xwingDescription, xWingImg, "", 11));
+      productRepository
+          .save(new Product("Interceptor", interceptorDescription, interceptorImg, "", 33));
+      userRepository.save(
+          new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG",
+              "ADMIN"));
+      userRepository.save(
+          new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
 
-        };
-    }
+    };
+  }
 
 }

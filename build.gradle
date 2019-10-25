@@ -28,7 +28,8 @@ dependencies {
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
     compile group: 'io.micrometer', name: 'micrometer-registry-prometheus'
-
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 
