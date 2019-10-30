@@ -27,16 +27,27 @@ public class User {
     private String role;
 
 
+    @Column(nullable = false)
+    private Boolean active;
+
     public User() {
     }
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role,Boolean active ) {
         super();
         setUsername(username);
         this.password = password;
         this.role = role;
+        this.active = active;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 
     public Integer getId() {
         return id;

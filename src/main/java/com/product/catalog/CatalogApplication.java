@@ -36,17 +36,21 @@ public class CatalogApplication {
       String interceptorDescription = "An interceptor was a starfighter classification typically "
           + "applied to starships that sacrificed heavy ordnance payloads, armor, deflector "
           + "shields, and/or a hyperdrive in favor of pure speed and agility in combat.";
-      String interceptorImg = "https://vignette.wikia.nocookie.net/starwars/images/f/f5/TIE_Interceptor_BF"
+      String interceptorImg = "https://vignette.wikia.nocookie"
+          + ".net/starwars/images/f/f5/TIE_Interceptor_BF"
           + ".png/revision/latest/scale-to-width-down/2000?cb=20170501054325";
-      String xWingImg ="https://vignette.wikia.nocookie.net/starwars/images/6/60/Xwing-SWB.jpg/revision/latest/scale-to-width-down/2000?cb=20160704070524";
-      productRepository.save(new Product("xWing", xwingDescription, xWingImg, "", 11));
+      String xWingImg = "https://vignette.wikia.nocookie.net/starwars/images/6/60/Xwing-SWB"
+          + ".jpg/revision/latest/scale-to-width-down/2000?cb=20160704070524";
+
+      productRepository.save(new Product("xWing", xwingDescription, xWingImg, "admin", 11));
       productRepository
-          .save(new Product("Interceptor", interceptorDescription, interceptorImg, "", 33));
+          .save(new Product("Interceptor", interceptorDescription, interceptorImg, "user", 33));
       userRepository.save(
           new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG",
-              "ADMIN"));
+              "ADMIN", true));
       userRepository.save(
-          new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
+          new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER",
+              true));
 
     };
   }

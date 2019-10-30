@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -60,13 +61,13 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
   @Override
   public User save(UserDto user) {
+
     User newUser = new User();
     newUser.setUsername(user.getUsername());
     newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
     newUser.setRole("USER");
     return userRepository.save(newUser);
   }
-
 
 
 }
