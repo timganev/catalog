@@ -51,7 +51,8 @@ public class CatalogApplication {
       productRepository.save(new Product("Interceptor", interceptorDescription, interceptorImg, "user", 33));
       userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN", true));
       userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER", true));
-      messageRepository.save(new Message("First Message", "Body of the Message", userRepository.getOne(1), userRepository.getOne(2), false));
+      messageRepository.save(new Message("First send", "Body of the Message", userRepository.getOne(1), userRepository.getOne(2), false));
+      messageRepository.save(new Message("First recive", "Body of the Message", userRepository.getOne(2), userRepository.getOne(1), false));
     };
   }
 
