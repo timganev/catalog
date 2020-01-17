@@ -2,7 +2,9 @@ package com.product.catalog;
 
 import com.product.catalog.message.Message;
 import com.product.catalog.message.MessageRepository;
+import com.product.catalog.product.Product;
 import com.product.catalog.product.ProductRepository;
+import com.product.catalog.user.User;
 import com.product.catalog.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -45,11 +47,11 @@ public class CatalogApplication {
       String xWingImg = "https://vignette.wikia.nocookie.net/starwars/images/6/60/Xwing-SWB"
           + ".jpg/revision/latest/scale-to-width-down/2000?cb=20160704070524";
 
-//      productRepository.save(new Product("xWing", xwingDescription, xWingImg, "admin", 11));
-//      productRepository.save(new Product("Interceptor", interceptorDescription, interceptorImg, "user", 33));
-//      userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN", true));
-//      userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER", true));
-//      messageRepository.save(new Message("First Message", "Body of the Message", userRepository.getOne(1), userRepository.getOne(2), false));
+      productRepository.save(new Product("xWing", xwingDescription, xWingImg, "admin", 11));
+      productRepository.save(new Product("Interceptor", interceptorDescription, interceptorImg, "user", 33));
+      userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN", true));
+      userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER", true));
+      messageRepository.save(new Message("First Message", "Body of the Message", userRepository.getOne(1), userRepository.getOne(2), false));
     };
   }
 
