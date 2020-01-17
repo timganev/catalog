@@ -1,5 +1,7 @@
 package com.product.catalog.security;
 
+import com.product.catalog.user.User;
+import com.product.catalog.user.UserDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -45,10 +47,12 @@ public class AuthenticationService {
               .parseClaimsJws(token.replace(PREFIX, ""))
               .getBody();
 
-      String user = claims.getSubject();
+      User user = new User();
+      user.setUsername(claims.getSubject());
 
       final Collection<? extends GrantedAuthority> authorities =
               Arrays.stream(claims.get("scope").toString().split(","))
+                  .map((role)->"ROLE_"+role)
                       .map(SimpleGrantedAuthority::new)
                       .collect(Collectors.toList());
 

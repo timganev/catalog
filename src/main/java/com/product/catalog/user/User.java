@@ -1,6 +1,7 @@
 package com.product.catalog.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.product.catalog.message.Message;
 
 
 import javax.persistence.*;
@@ -26,9 +27,15 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-
     @Column(nullable = false)
     private Boolean active;
+
+
+    @OneToMany(mappedBy = "sender")
+    private Set<Message> sendMassages;
+
+    @OneToMany(mappedBy = "sender")
+    private Set<Message> reciveMassages;
 
     public User() {
     }

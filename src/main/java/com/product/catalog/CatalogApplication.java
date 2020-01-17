@@ -1,16 +1,19 @@
 package com.product.catalog;
 
-import com.product.catalog.product.Product;
+import com.product.catalog.message.Message;
+import com.product.catalog.message.MessageRepository;
 import com.product.catalog.product.ProductRepository;
-import com.product.catalog.user.User;
-import com.product.catalog.user.UserDto;
 import com.product.catalog.user.UserRepository;
-import com.product.catalog.user.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+
+@EnableGlobalMethodSecurity(
+    prePostEnabled = true,
+    securedEnabled = true,
+    jsr250Enabled = true)
 
 @SpringBootApplication
 public class CatalogApplication {
@@ -26,7 +29,7 @@ public class CatalogApplication {
   }
 
   @Bean
-  CommandLineRunner runner(UserRepository userRepository, ProductRepository productRepository) {
+  CommandLineRunner runner(UserRepository userRepository, ProductRepository productRepository, MessageRepository messageRepository) {
     return args -> {
 
       String xwingDescription = "Designed and manufactured by the Incom Corporation, they were "
@@ -42,16 +45,11 @@ public class CatalogApplication {
       String xWingImg = "https://vignette.wikia.nocookie.net/starwars/images/6/60/Xwing-SWB"
           + ".jpg/revision/latest/scale-to-width-down/2000?cb=20160704070524";
 
-      productRepository.save(new Product("xWing", xwingDescription, xWingImg, "admin", 11));
-      productRepository
-          .save(new Product("Interceptor", interceptorDescription, interceptorImg, "user", 33));
-      userRepository.save(
-          new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG",
-              "ADMIN", true));
-      userRepository.save(
-          new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER",
-              true));
-
+//      productRepository.save(new Product("xWing", xwingDescription, xWingImg, "admin", 11));
+//      productRepository.save(new Product("Interceptor", interceptorDescription, interceptorImg, "user", 33));
+//      userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN", true));
+//      userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER", true));
+//      messageRepository.save(new Message("First Message", "Body of the Message", userRepository.getOne(1), userRepository.getOne(2), false));
     };
   }
 
